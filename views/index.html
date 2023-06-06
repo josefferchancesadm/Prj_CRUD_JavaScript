@@ -15,6 +15,7 @@
     <div class="header">
       <span>Cadastro de Funcionários</span>
       <button onclick="openModal()" id="new">Incluir</i></button>
+      <button onclick="myFunction()">Try it</button>
     </div>
 
     <div class="divTable">
@@ -51,6 +52,16 @@
 
   </div>
   <script src="../public/script.js"></script>
+  <script>
+    function myFunction() {
+      const x = document.createElement("A");
+      const t = document.createTextNode("Tutorials");
+      x.setAttribute("href", "../public/arquivo.pdf");
+      x.appendChild(t);
+      document.body.appendChild(x);
+    }
+    </script>
+    
 </body>
 
 </html>
