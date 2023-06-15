@@ -18,6 +18,16 @@ app.get('/',(req,res)=>{
     res.render('index');
 });
 
+app.get('/videos',(req,res)=>{
+    // res.send('Hello World para docker testes agora');
+    res.render('videos');
+});
+
+app.get('/videos2',(req,res)=>{
+    // res.send('Hello World para docker testes agora');
+    res.render('videos2');
+});
+
 app.listen(PORT, HOST, ()=> {
     console.log(`Servidor rodando na porta ${PORT} no host ${HOST}`)
 })

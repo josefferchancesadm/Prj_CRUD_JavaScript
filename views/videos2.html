@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Videos 2</title>
+    <link rel="stylesheet" href="/public/style.css" />    
+  </head>
+  <body>
+    <!-- <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/aU5HYcXa-nE?loop=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+      <iframe
+        id="ytplayer"
+        type="text/html"
+        width="640"
+        height="360"
+        src="http://www.youtube.com/embed/aU5HYcXa-nE?autoplay=1&loop=1&origin=http://127.0.0.1:5500"
+        frameborder="0"
+      ></iframe> -->
+    <div id="player"></div>
+    
+    <script>
+      var tag = document.createElement("script");
+    //   tag.src = "https://www.youtube.com/iframe_api?listType=playlist";
+      tag.src = "https://www.youtube.com/iframe_api";
+      var ScriptTag = document.getElementsByTagName("script")[0];
+      ScriptTag.parentNode.insertBefore(tag, ScriptTag);
+
+      var player;
+
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("player", {
+          height: "390",
+          width: "640",                  
+          // videoId: "aU5HYcXa-nE",
+          playerVars: {
+            //<===============================]HERE]            
+            list: "PL3CDD0Jz5nVHYIoTl2B42eqO_MAwW50A9",
+            controls: "0",
+            modestbranding: "1",
+            autoplay: "1",
+            showinfo: "0",
+            rel: "0",
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+          },
+        });
+      }
+
+      function onPlayerReady(event) {
+        console.log("testes playready");
+        event.target.playVideo();
+      }
+
+      var done = false;
+
+      function onPlayerStateChange(event) {
+        console.log("testes playrstatechance");
+        if (event.data == YT.PlayerState.ENDED && !done) {
+          console.log("entrou na condição");
+          //   player.loadVideoById("aU5HYcXa-nE");
+          player.playVideo();
+        }
+      }
+    </script>
+  </body>
+</html>
